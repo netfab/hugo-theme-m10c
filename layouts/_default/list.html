@@ -1,10 +1,10 @@
 {{ define "main" }}
   <article>
-    <!--
+    {{ if not .Site.Params.noList }}
     {{ with .Title -}}<h1>{{- . -}}</h1>{{- end }}
-	-->
+    {{ end }}
     {{ with .Content -}}<div class="post-content">{{- . -}}</div>{{- end }}
-    <!--
+    {{ if not .Site.Params.noList }}
     <ul class="posts-list">
       {{ range where .Paginator.Pages "Type" "!=" "page" }}
         <li class="posts-list-item">
@@ -22,7 +22,7 @@
         </li>
       {{ end }}
     </ul>
-    -->
     {{ partial "pagination.html" $ }}
+    {{ end }}
   </article>
 {{ end }}
